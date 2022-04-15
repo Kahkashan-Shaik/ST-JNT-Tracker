@@ -80,7 +80,7 @@ class St_Jnt_helper{
                         "length"=>0,
                         "weight"=>15,
                         "remark"=>"description goes here",
-                        "txlogisticId"=>"AAAA123123",
+                        "txlogisticId"=>"AAAA12312356",
                         "goodsType"=>"ITN1",
                         "priceCurrency"=>"SAR",
                         "totalQuantity"=>1,
@@ -94,7 +94,7 @@ class St_Jnt_helper{
                         );
             
             $jsondata = json_encode($post_data);    
-            $header_digest = st_jnt_header_digest($jsondata, $settings['st_jnt_private_key']);
+            $header_digest = $this->st_jnt_header_digest($jsondata, $settings['st_jnt_private_key']);
             $post_array = array('bizContent' => $jsondata);
             $this->st_jnt_api_ctrl->create_order($settings['st_jnt_api_acc'], $header_digest, '1565238848921' ,$post_array, $order_id);
         }
@@ -103,7 +103,7 @@ class St_Jnt_helper{
      * header Digest
      * */
     function st_jnt_header_digest($jsondata, $privatekey){
-        $digest= base64_encode(pack('H*',strtoupper(md5($jondata.$privatekey))));
+        $digest= base64_encode(pack('H*',strtoupper(md5($jsondata.$privatekey))));
         return $digest;
     }
     /**

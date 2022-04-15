@@ -34,9 +34,12 @@ class St_Jnt_apiCtrl{
                     echo "Something went wrong: $error_message";
             }else{
                 $response = json_decode(wp_remote_retrieve_body( $response ) );
-                add_post_meta($order_id, 'txlogisticId', $response->data->txlogisticId);
-                add_post_meta($order_id, 'billcode', $response->data->billCode);
-                add_post_meta($order_id, 'createOrderTime', $response->data->createOrderTime);
+                if(get_post_meta($order_id, 'txlogisticId', $single=true) == NULL && get_post_meta($order_id, 'billcode', $single=true) == NULL){
+                    add_post_meta($order_id, 'txlogisticId', $response->data->txlogisticId);
+                    add_post_meta($order_id, 'billcode', $response->data->billCode);
+                    add_post_meta($order_id, 'createOrderTime', $response->data->createOrderTime);
+                }
+                // print_r($response);
             }
         }
 }
