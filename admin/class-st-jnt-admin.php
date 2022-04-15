@@ -90,5 +90,8 @@ class St_Jnt_Admin {
             echo (get_post_meta($order_id, 'txlogisticId', $single=true)).'<br/>';
             echo (get_post_meta($order_id, 'billcode', $single=true)).'<br/>';
             echo (get_post_meta($order_id, 'createOrderTime', $single=true)).'<br/>';
+         // require_once ST_PLUGIN_DIR. 'admin/class-st-jnt-createOrder.php';   
+         // $orderobj = new St_Jnt_CreateOrder();
+         // $orderobj->st_jnt_action_on_orderprocessing(60);   
     }
 }

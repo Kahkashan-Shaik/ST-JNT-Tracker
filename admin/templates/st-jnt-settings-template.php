@@ -47,3 +47,4 @@ $settings = ('' !== (get_option('st-jnt-settings')) ? get_option('st-jnt-setting
         </form>
     </div>
 </div>
+
